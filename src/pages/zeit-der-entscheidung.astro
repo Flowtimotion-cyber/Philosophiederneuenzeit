@@ -1,6 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
-import Cover from '../components/Cover.astro';
+import Buch from '../components/Buch.astro';
 import { u, site } from '../lib.js';
 import { rezensionen } from '../data/werk.js';
 
@@ -40,7 +40,7 @@ const bookLd = {
         <p>Zu Romano Guardinis Deutung der Gegenwart. Die Untersuchung erschien 1990 in Fridingen an der Donau (186 Seiten) und wird nun als E-Book neu zugänglich gemacht.</p>
         <p class="aktion"><a class="btn" href={`mailto:${site.email}?subject=E-Book%20Zeit%20der%20Entscheidung`}>Bei Erscheinen benachrichtigen</a> <a class="more" href="#leseprobe">Leseprobe lesen</a></p>
       </div>
-      <Cover />
+      <Buch gross />
     </div>
   </header>
 
@@ -92,11 +92,11 @@ const bookLd = {
 </Base>
 
 <style>
-  .kopf { display: grid; grid-template-columns: minmax(0, 1fr) minmax(12rem, 17rem); gap: clamp(2rem, 6vw, 6rem); align-items: end; }
+  .kopf { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: clamp(2rem, 5vw, 5rem); align-items: center; }
   .ausgabe { color: var(--seal); font-size: .9rem; margin-bottom: 1rem; }
   .aktion { display: flex; flex-wrap: wrap; gap: 1rem 2rem; align-items: center; margin-top: 2rem !important; font-size: 1rem !important; }
-  @media (max-width: 48rem) { .kopf { grid-template-columns: 1fr; } .kopf :global(.cover) { max-width: 12rem; } }
-  .leseprobe { background: #f5f1ea; }
+  @media (max-width: 60rem) { .kopf { grid-template-columns: 1fr; } }
+  .leseprobe { background: #fff; }
   .text p { text-align: justify; hyphens: auto; -webkit-hyphens: auto; line-height: 1.7; }
   .text p + p { text-indent: 1.5em; margin-top: -0.6em; }
   .text p.fn { text-indent: 0; margin-top: 2rem; font-size: .95rem; color: var(--ink-soft); text-align: left; padding-top: .75rem; position: relative; }

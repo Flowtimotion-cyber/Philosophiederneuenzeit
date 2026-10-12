@@ -55,7 +55,8 @@ const ld = [person, ...(jsonld ? (Array.isArray(jsonld) ? jsonld : [jsonld]) : [
   <meta property="og:url" content={canonical} />
   <meta property="og:image" content={ogImage} />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="theme-color" content="#201a15" />
+  <meta name="theme-color" content="#fbf9f4" />
+  <script is:inline>document.documentElement.classList.add('js');</script>
   <link rel="icon" href={u('favicon.svg')} type="image/svg+xml" />
   <link rel="sitemap" href={u('sitemap-index.xml')} />
   <slot name="head" />
@@ -90,7 +91,7 @@ const ld = [person, ...(jsonld ? (Array.isArray(jsonld) ? jsonld : [jsonld]) : [
         <div>
           <h2>Dr. Magdalena Börsig-Hover</h2>
           <p class="foot-claim">{site.claim}</p>
-          <p class="sans" style="font-size:.9rem;color:#c4b49c;max-width:28rem">Historische und philosophische Forschung zu Diplomatiegeschichte, Ideengeschichte, Philosophie und Theologie. Publiziert auch als Lina Börsig-Hover.</p>
+          <p class="sans" style="font-size:.9rem;color:#cfd8c6;max-width:28rem">Historische und philosophische Forschung zu Diplomatiegeschichte, Ideengeschichte, Philosophie und Theologie. Publiziert auch als Lina Börsig-Hover.</p>
         </div>
         <div>
           <ul>
@@ -100,6 +101,8 @@ const ld = [person, ...(jsonld ? (Array.isArray(jsonld) ? jsonld : [jsonld]) : [
         <div>
           <ul>
             <li><a href={`mailto:${site.email}`}>{site.email}</a></li>
+            <li><a href="https://www.youtube.com/channel/UClImlO5CRyfyVc07ar_ei0A" rel="noopener">YouTube</a></li>
+            <li><a href="https://www.instagram.com/philosophiednzeit/" rel="noopener">Instagram</a></li>
             <li><a href={u('impressum/')}>Impressum</a></li>
             <li><a href={u('datenschutz/')}>Datenschutz</a></li>
           </ul>
@@ -111,5 +114,26 @@ const ld = [person, ...(jsonld ? (Array.isArray(jsonld) ? jsonld : [jsonld]) : [
       </div>
     </div>
   </footer>
+  <script>
+    // Einblendungen beim Scrollen: Elemente bekommen automatisch data-reveal, Geschwister werden leicht versetzt eingeblendet
+    const auto = [
+      '.page-head h1', '.page-head p', '.page-head .toc',
+      '.folio > *', '.felder > article', '.bib > li', '.zeilen > li', '.rgruppe',
+      '.person-grid > *', '.buch-text > *', '.kontakt > *', '.profil .text > *', '.taet > li',
+      '.leit blockquote', '.ziele > li', '.weg > *',
+    ];
+    document.querySelectorAll<HTMLElement>(auto.join(',')).forEach((el) => {
+      if (el.hasAttribute('data-reveal') || el.closest('[data-reveal]')) return;
+      el.setAttribute('data-reveal', '');
+      const geschw = Array.from(el.parentElement?.children ?? []);
+      el.style.setProperty('--i', String(Math.min(geschw.indexOf(el), 6)));
+    });
+    const io = new IntersectionObserver((eintraege) => {
+      for (const e of eintraege) {
+        if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); }
+      }
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+    document.querySelectorAll('[data-reveal], [data-linie]').forEach((el) => io.observe(el));
+  </script>
 </body>
 </html>

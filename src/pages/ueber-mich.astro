@@ -3,7 +3,7 @@ import Base from '../layouts/Base.astro';
 import { u } from '../lib.js';
 import { taetigkeiten } from '../data/werk.js';
 ---
-<Base title="Über mich" path="ueber-mich/" image="img/portrait-mauer-800.webp" description="Dr. Magdalena Börsig-Hover: Philosophin und Historikerin. Forschung zu Person, Freiheit, Wahrheit und Entscheidung, von der Diplomatie des 19. Jahrhunderts bis zur digitalen Gegenwart.">
+<Base title="Über mich" path="ueber-mich/" image="img/farbe-mauer-880.webp" description="Dr. Magdalena Börsig-Hover: Philosophin und Historikerin. Forschung zu Person, Freiheit, Wahrheit und Entscheidung, von der Diplomatie des 19. Jahrhunderts bis zur digitalen Gegenwart.">
   <header class="page-head">
     <div class="wrap">
       <h1>Historisch denken, gegenwartsbezogen fragen</h1>
@@ -12,8 +12,8 @@ import { taetigkeiten } from '../data/werk.js';
 
   <section class="sect">
     <div class="wrap profil">
-      <figure>
-        <img src={u('img/portrait-mauer-800.webp')} srcset={`${u('img/portrait-mauer-800.webp')} 800w, ${u('img/portrait-mauer-1400.webp')} 880w`} sizes="(max-width: 52rem) 100vw, 26rem" alt="Dr. Magdalena Börsig-Hover vor einer alten Natursteinmauer" width="880" height="1307" />
+      <figure class="foto" data-reveal="bild">
+        <img src={u('img/farbe-mauer-880.webp')} sizes="(max-width: 52rem) 100vw, 26rem" alt="Dr. Magdalena Börsig-Hover vor einer alten Natursteinmauer" width="880" height="1307" />
       </figure>
       <div class="text">
         <p class="lead">Meine wissenschaftliche Arbeit bewegt sich zwischen Geschichte, Philosophie, Theologie und Diplomatiegeschichte.</p>
@@ -21,6 +21,18 @@ import { taetigkeiten } from '../data/werk.js';
         <p>Der Forschungsbogen reicht vom europäischen Umbruch des 19. Jahrhunderts über die geistige Krisendiagnose des 20. Jahrhunderts bis zu den Orientierungsfragen des 21. Jahrhunderts. Im Zentrum steht die Frage, wie der Mensch in Zeiten tiefgreifender Veränderung Wirklichkeit deutet, Wahrheit prüft und zu verantwortlicher Entscheidung gelangt.</p>
         <p>Das wissenschaftliche Profil verbindet historische Rekonstruktion, philosophische und theologische Ideengeschichte, Rezeptionsforschung und gegenwartsbezogene Reflexion. Die Vergangenheit wird nicht als abgeschlossener Gegenstand untersucht, sondern als Ort, an dem sich Fragen nach Person, Freiheit, Wahrheit, Verantwortung und Entscheidung exemplarisch beobachten lassen.</p>
         <p class="name-hinweis">Veröffentlichungen sind überwiegend unter dem Namen <em>Lina Börsig-Hover</em> erschienen; „Lina“ ist die Rufnamenform von Magdalena.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sect weg-sect">
+    <div class="wrap folio">
+      <p class="marg">Mein Weg</p>
+      <div class="weg">
+        <p class="lead">Mich haben Menschen immer interessiert: wie sie miteinander leben, wie sie Konflikte lösen und wie sich ihre Lebensbedingungen verbessern lassen.</p>
+        <p>Früh habe ich mich für Schwächere eingesetzt und in Konflikten vermittelt. Diese Haltung führte mich zum Studium der Sozialpädagogik und der Philosophie, mit den Nebenfächern Soziologie und Kommunikationswissenschaft. Philosophie habe ich zugleich an einer Universität und an einer Hochschule studiert, aus Leidenschaft für Erkenntnis und Forschung.</p>
+        <p>Dabei rückte ein Phänomen ins Zentrum, das mich bis heute begleitet: die Wirklichkeit. Was ich zunächst nur ahnen konnte, kann ich heute zunehmend begrifflich fassen. Diese Grundhaltung hat mir geholfen, ideologische Denkansätze zu erkennen, auch dort, wo Wissenschaft von Interessen geleitet wird.</p>
+        <p>Deshalb habe ich mich den großen Denkern der Epochen zugewandt, um an ihre Gedankenwelten anzuknüpfen und die geistesgeschichtlichen Wurzeln unmittelbar mit der Gegenwart zu verbinden. Dieser Weg ist nicht abgeschlossen.</p>
       </div>
     </div>
   </section>
@@ -35,7 +47,7 @@ import { taetigkeiten } from '../data/werk.js';
 
   <section class="leit">
     <div class="wrap">
-      <img src={u('img/portrait-wald-1200.webp')} alt="Magdalena Börsig-Hover im Wald, an einen Baumstamm gelehnt" width="1200" height="887" loading="lazy" />
+      <figure class="foto" data-reveal="bild"><img src={u('img/farbe-steine-1600.webp')} alt="Magdalena Börsig-Hover im Wald, Steine auf einem moosbewachsenen Hügel ordnend" width="1600" height="1066" loading="lazy" /></figure>
       <blockquote>
         <p>Von der Geschichte diplomatischer Wahrnehmung über Guardinis Deutung der Gegenwart bis zur digitalen Welt des 21. Jahrhunderts: eine Forschung über die Bedingungen menschlicher Orientierung, Wahrheitsfindung und verantwortlicher Entscheidung in Zeiten des Umbruchs.</p>
         <cite>Leitmotiv</cite>
@@ -48,12 +60,13 @@ import { taetigkeiten } from '../data/werk.js';
   .profil figure { margin: 0; position: sticky; top: 6rem; }
   .name-hinweis { font-size: 1rem; color: var(--ink-soft); border-top: 1px solid var(--rule); padding-top: 1rem; margin-top: 2rem; }
   @media (max-width: 52rem) { .profil { grid-template-columns: 1fr; } .profil figure { position: static; max-width: 22rem; } }
+  .weg-sect { background: var(--paper-2); }
   .taet { padding-left: 1.1rem; margin: 0; }
   .taet li { margin-bottom: .8rem; line-height: 1.5; }
   .taet li::marker { color: var(--seal); }
-  .leit { background: var(--night); color: var(--night-text); padding: clamp(4rem, 8vw, 7rem) 0; }
+  .leit { background: var(--sage); padding: clamp(4rem, 8vw, 7rem) 0; }
   .leit .wrap { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 5vw, 5rem); align-items: center; }
-  .leit blockquote { margin: 0; font-size: clamp(1.4rem, 1.1rem + 1vw, 1.9rem); line-height: 1.35; font-style: italic; font-weight: 400; color: #f4ecdf; }
-  .leit cite { display: block; margin-top: 1.25rem; font-family: var(--sans); font-style: normal; font-size: .85rem; color: #c4b49c; }
+  .leit blockquote { margin: 0; font-size: clamp(1.4rem, 1.1rem + 1vw, 1.9rem); line-height: 1.35; font-style: italic; font-weight: 400; color: var(--ink); }
+  .leit cite { display: block; margin-top: 1.25rem; font-family: var(--sans); font-style: normal; font-size: .85rem; color: var(--seal); }
   @media (max-width: 52rem) { .leit .wrap { grid-template-columns: 1fr; } }
 </style>

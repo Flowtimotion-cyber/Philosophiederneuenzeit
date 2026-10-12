@@ -1,0 +1,154 @@
+---
+// Animiertes Buch: öffnet sich beim Hineinscrollen und blättert bis zur Einführung.
+// Mit den Knöpfen lässt sich vor- und zurückblättern.
+interface Props { gross?: boolean }
+const { gross = false } = Astro.props;
+---
+<div class:list={['buch3d', { gross }]} data-buch>
+  <div class="stage">
+    <div class="seite basis">
+      <p class="kopf">I. Das Erbe Romano Guardinis</p>
+      <p class="ueb">1. Kategorie „Neuzeit“</p>
+      <p>Romano Guardini versteht unter dem Begriff der Neuzeit nicht nur eine historische Epoche, sondern ein bestimmtes Verhältnis des Menschen zum Sein, zur Welt und zu sich selbst.</p>
+      <span class="nr">15</span>
+    </div>
+
+    <div class="blatt" style="--n:0">
+      <div class="f umschlag">
+        <div class="u-rahmen">
+          <span class="u-autor">Lina Börsig-Hover</span>
+          <span class="u-titel">Zeit der<br />Entscheidung</span>
+          <span class="u-strich"></span>
+          <span class="u-unter">Zu Romano Guardinis<br />Deutung der Gegenwart</span>
+          <span class="u-ed">E-Book</span>
+        </div>
+      </div>
+      <div class="b seite titelei">
+        <p class="t-autor">Lina Börsig-Hover</p>
+        <p class="t-titel">Zeit der Entscheidung</p>
+        <p class="t-unter">Zu Romano Guardinis Deutung der Gegenwart</p>
+        <p class="t-ort">Erstausgabe Fridingen an der Donau 1990<br />Neuausgabe als E-Book</p>
+      </div>
+    </div>
+
+    <div class="blatt" style="--n:1">
+      <div class="f seite">
+        <p class="kopf">Inhalt</p>
+        <ul class="inh">
+          <li>Sinn der Zeit. Eine Einführung</li>
+          <li>I. Das Erbe Romano Guardinis</li>
+          <li class="u">1. Kategorie „Neuzeit“</li>
+          <li class="u">2. Neuzeitliche Daseinsdeutung</li>
+        </ul>
+        <span class="nr">5</span>
+      </div>
+      <div class="b seite">
+        <p class="ueb">Sinn der Zeit. Eine Einführung</p>
+        <p>Der Sinn einer Kulturepoche liegt letztlich nicht darin, daß der Mensch zu immer größerer Naturbeherrschung gelangt, sondern daß er die Gestalt des Daseins hervorbringt, welche die Geschichte fordert.</p>
+        <span class="nr">9</span>
+      </div>
+    </div>
+
+    <div class="blatt" style="--n:2">
+      <div class="f seite">
+        <p>Der heutigen Zeit ist eine zweifache Aufgabe gestellt. Das menschliche Leben hat das zu werden, was es immer schon war und ist. Die Zeit drängt zu dieser Entscheidung.</p>
+        <span class="nr">10</span>
+      </div>
+      <div class="b seite zitat">
+        <p>„Alles wird also darauf ankommen, ob es dem Menschen gelingt, als Person zu leben und als solche diese Welt überhaupt zu gestalten.“</p>
+        <span class="nr">11</span>
+      </div>
+    </div>
+  </div>
+  <div class="steuer">
+    <button type="button" data-zurueck aria-label="Zurückblättern">‹</button>
+    <span class="sans" aria-live="polite" data-status>Zum Blättern klicken</span>
+    <button type="button" data-weiter aria-label="Weiterblättern">›</button>
+  </div>
+</div>
+
+<style>
+  .buch3d { --pw: clamp(8.6rem, 31vw, 13.5rem); --ph: calc(var(--pw) * 1.45); width: calc(var(--pw) * 2); margin: 0 auto; perspective: 2200px; user-select: none; }
+  .buch3d.gross { --pw: clamp(8.6rem, 33vw, 15.5rem); }
+  .stage { position: relative; width: calc(var(--pw) * 2); height: var(--ph); transform-style: preserve-3d; transform: translateX(calc(var(--pw) * -0.5)) rotateX(10deg) rotateZ(-2deg); transition: transform 1.2s var(--ease); cursor: pointer; }
+  .buch3d.offen .stage { transform: translateX(0) rotateX(14deg); }
+  .buch3d:hover .stage { transform: translateX(calc(var(--pw) * -0.5)) rotateX(6deg) rotateZ(-1deg) translateY(-6px); }
+  .buch3d.offen:hover .stage { transform: translateX(0) rotateX(10deg) translateY(-4px); }
+
+  .seite { position: absolute; inset: 0; background: linear-gradient(90deg, #efe8da 0%, #fdfbf6 9%, #fffdf9 100%); color: #2b2f35; padding: 11% 11% 13%; font-family: var(--serif); font-size: calc(var(--pw) * .062); line-height: 1.45; overflow: hidden; }
+  .seite p { margin: 0 0 .7em; font-size: 1em; line-height: 1.45; max-width: none; color: inherit; font-weight: 500; }
+  .basis { left: var(--pw); width: var(--pw); box-shadow: 4px 6px 0 -1px #e9e2d3, 7px 9px 0 -2px #ddd4c2, 0 30px 40px -24px rgba(35, 40, 47, .45); border-radius: 0 3px 3px 0; }
+  .seite .kopf { font-size: .62em; font-family: var(--sans); font-size: .62em; color: var(--sepia); letter-spacing: .02em; border-bottom: 1px solid #e6dfd1; padding-bottom: .4em; }
+  .seite .ueb { font-size: 1.12em; font-weight: 600; font-size: 1.12em; line-height: 1.2; }
+  .nr { position: absolute; bottom: 6%; left: 0; right: 0; text-align: center; font-family: var(--sans); font-size: .55em; color: #9a8f80; }
+  .inh { list-style: none; padding: 0; margin: 0; }
+  .inh li { padding: .35em 0; border-bottom: 1px dotted #d9d0bf; }
+  .inh li.u { padding-left: 1em; color: #5c626a; }
+
+  .blatt { position: absolute; top: 0; left: var(--pw); width: var(--pw); height: var(--ph); transform-origin: left center; transform-style: preserve-3d; transition: transform 1.25s var(--ease); z-index: calc(10 - var(--n)); }
+  .blatt.um { transform: rotateY(-178deg); }
+  .f, .b { position: absolute; inset: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden; }
+  .b { transform: rotateY(180deg); }
+  .b.seite { background: linear-gradient(270deg, #efe8da 0%, #fdfbf6 9%, #fffdf9 100%); }
+  .f.seite { border-radius: 0 3px 3px 0; }
+
+  .umschlag { background: linear-gradient(135deg, #3c4c3b, #2f3b30 60%, #27312a); border-radius: 2px 4px 4px 2px; padding: 8%; box-shadow: inset 6px 0 10px -4px rgba(0,0,0,.45), 0 30px 40px -24px rgba(35,40,47,.55); }
+  .u-rahmen { height: 100%; border: 1px solid rgba(220, 205, 170, .55); display: flex; flex-direction: column; align-items: center; justify-content: space-between; text-align: center; padding: 12% 6%; color: #f2eee4; }
+  .u-autor, .u-ed { font-family: var(--sans); font-size: calc(var(--pw) * .048); color: #d8cfb6; letter-spacing: .06em; }
+  .u-titel { font-family: var(--serif); font-size: calc(var(--pw) * .15); line-height: 1; margin-top: 18%; }
+  .u-strich { width: 22%; height: 1px; background: #d8b46a; margin: 6% 0; }
+  .u-unter { font-family: var(--serif); font-style: italic; font-size: calc(var(--pw) * .068); line-height: 1.3; color: #e4dcc6; margin-bottom: auto; }
+
+  .titelei { text-align: center; display: flex; flex-direction: column; justify-content: center; gap: .3em; }
+  .seite .t-autor { font-size: .62em; font-family: var(--sans); font-size: .62em; color: var(--sepia); }
+  .seite .t-titel { font-size: 1.5em; line-height: 1.1; font-weight: 500; }
+  .t-unter { font-style: italic; color: #5c626a; }
+  .seite .t-ort { font-size: .55em; font-family: var(--sans); font-size: .55em; color: #8e8576; margin-top: 2em !important; }
+  .zitat { display: flex; align-items: center; }
+  .seite.zitat p { font-style: italic; font-size: 1.22em; line-height: 1.35; color: var(--seal-strong); }
+
+  .steuer { display: flex; align-items: center; justify-content: center; gap: 1rem; margin-top: 2.2rem; }
+  .steuer button { width: 2.4rem; height: 2.4rem; border-radius: 50%; border: 1px solid var(--rule); background: #fff; color: var(--ink); font-size: 1.3rem; line-height: 1; cursor: pointer; transition: border-color .2s, transform .2s; }
+  .steuer button:hover { border-color: var(--seal); transform: translateY(-1px); }
+  .steuer button:disabled { opacity: .35; cursor: default; transform: none; }
+  .steuer span { font-size: .8rem; color: var(--ink-soft); min-width: 9rem; text-align: center; }
+
+  @media (prefers-reduced-motion: reduce) { .blatt, .stage { transition: none; } }
+</style>
+
+<script>
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  document.querySelectorAll<HTMLElement>('[data-buch]').forEach((buch) => {
+    const blaetter = Array.from(buch.querySelectorAll<HTMLElement>('.blatt'));
+    const status = buch.querySelector<HTMLElement>('[data-status]')!;
+    const zurueck = buch.querySelector<HTMLButtonElement>('[data-zurueck]')!;
+    const weiter = buch.querySelector<HTMLButtonElement>('[data-weiter]')!;
+    const texte = ['Umschlag', 'Titelei', 'Einführung', 'Seite 11'];
+    let stand = 0;
+    const zeige = (n: number) => {
+      stand = Math.max(0, Math.min(blaetter.length, n));
+      blaetter.forEach((b, i) => {
+        const um = i < stand;
+        b.classList.toggle('um', um);
+        // umgeschlagene Blätter liegen links übereinander: zuletzt umgeschlagenes oben
+        b.style.zIndex = String(um ? 20 + i : 10 - i);
+      });
+      buch.classList.toggle('offen', stand > 0);
+      zurueck.disabled = stand === 0;
+      weiter.disabled = stand === blaetter.length;
+      status.textContent = texte[stand];
+    };
+    zurueck.addEventListener('click', (e) => { e.stopPropagation(); zeige(stand - 1); });
+    weiter.addEventListener('click', (e) => { e.stopPropagation(); zeige(stand + 1); });
+    buch.querySelector('.stage')!.addEventListener('click', () => zeige(stand === blaetter.length ? 0 : stand + 1));
+    zeige(0);
+
+    if (reduce) { zeige(blaetter.length); return; }
+    const io = new IntersectionObserver((eintraege) => {
+      if (!eintraege[0].isIntersecting) return;
+      io.disconnect();
+      blaetter.forEach((_, i) => setTimeout(() => zeige(i + 1), 700 + i * 850));
+    }, { threshold: 0.55 });
+    io.observe(buch);
+  });
+</script>
