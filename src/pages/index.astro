@@ -1,0 +1,125 @@
+---
+import Base from '../layouts/Base.astro';
+import Linie from '../components/Linie.astro';
+import Cover from '../components/Cover.astro';
+import { u } from '../lib.js';
+---
+<Base
+  title="Startseite"
+  description="Dr. Magdalena Börsig-Hover: Historische Forschung an der Schnittstelle von Diplomatiegeschichte, Ideengeschichte, Philosophie und Theologie. Romano Guardini, Edith Stein, Europa 1887–1889."
+>
+  <section class="hero">
+    <picture>
+      <source media="(max-width: 60rem)" srcset={u('img/hero-960.webp')} />
+      <img src={u('img/hero-1600.webp')} alt="Schreibtisch mit diplomatischer Depesche, historischer Europakarte und aufgeschlagenem philosophischem Buch im Seitenlicht" width="1536" height="1024" fetchpriority="high" />
+    </picture>
+    <div class="hero-text wrap">
+      <p class="hero-name sans">Dr. Magdalena Börsig-Hover</p>
+      <h1>Geschichte verstehen.<br />Gegenwart deuten.<br />Verantwortung übernehmen.</h1>
+      <p class="hero-sub">Historische Forschung an der Schnittstelle von Diplomatiegeschichte, Ideengeschichte, Philosophie und Theologie.</p>
+      <p class="hero-links">
+        <a class="btn" href={u('forschung/')}>Forschung kennenlernen</a>
+        <a class="hero-alt" href={u('zeit-der-entscheidung/')}>Zeit der Entscheidung, neu als E-Book</a>
+      </p>
+    </div>
+  </section>
+
+  <section class="sect">
+    <div class="wrap folio">
+      <p class="marg">Leitfragen</p>
+      <ol class="fragen">
+        <li>Wie nehmen Menschen historische Umbrüche wahr?</li>
+        <li>Wie entstehen aus Informationen Deutungen, und aus Deutungen Entscheidungen?</li>
+        <li>Wie kann unter Bedingungen widersprüchlicher, medial vermittelter Wirklichkeit verantwortliche Orientierung gelingen?</li>
+      </ol>
+      <p>Diese Fragen verbinden meine Forschung zur europäischen Diplomatiegeschichte des 19. Jahrhunderts mit meinen Arbeiten zu Romano Guardini, seiner Deutung der Moderne und seiner wissenschaftlichen Rezeption.</p>
+    </div>
+  </section>
+
+  <section class="sect felder-sect">
+    <div class="wrap folio">
+      <p class="marg">Forschungsfelder</p>
+      <h2 class="wide">Zwischen Geschichte und Gegenwart</h2>
+      <div class="felder wide">
+        <article>
+          <h3><a href={u('forschung/#guardini')}>Romano Guardini und die Deutung der Gegenwart</a></h3>
+          <p>Was bedeutet es, in einer Epoche Mensch zu sein, in der traditionelle Ordnungen ihre Selbstverständlichkeit verlieren? Guardinis Personbegriff und seine Analyse der Neuzeit.</p>
+        </article>
+        <article>
+          <h3><a href={u('forschung/#diplomatie')}>Diplomatiegeschichte 1887–1889</a></h3>
+          <p>Dreibund, Mittelmeerabkommen, Rückversicherungsvertrag, und die Frage, wie die Mayerling-Tragödie in den diplomatischen Kanälen Europas wahrgenommen wurde.</p>
+        </article>
+        <article>
+          <h3><a href={u('forschung/#quellenkritik')}>Quellenkritik als Gegenwartsaufgabe</a></h3>
+          <p>Der Diplomat des 19. Jahrhunderts musste Mitteilung, Gerücht und Beobachtung unterscheiden. Im Zeitalter künstlicher Intelligenz stellt sich dieselbe Frage neu: Wie bleibt der Mensch urteilsfähig?</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <Linie />
+
+  <section class="sect">
+    <div class="wrap buch">
+      <div class="buch-cover"><Cover /></div>
+      <div class="buch-text">
+        <p class="marg-inline">Neuausgabe als E-Book</p>
+        <h2>Zeit der Entscheidung</h2>
+        <p class="lead">Zu Romano Guardinis Deutung der Gegenwart</p>
+        <p>Die 1990 erschienene Untersuchung verschiebt den Akzent von Guardinis Personbegriff auf seine Geschichts- und Gegenwartsdeutung: Was kennzeichnet die Neuzeit, warum ist sie an ihr Ende gekommen, und welche Entscheidung verlangt die Zeit vom Menschen als Person?</p>
+        <blockquote class="quote">„Alles wird also darauf ankommen, ob es dem Menschen gelingt, als Person zu leben und als solche diese Welt überhaupt zu gestalten.“<cite>Aus der Einführung</cite></blockquote>
+        <a class="more" href={u('zeit-der-entscheidung/')}>Zum Buch und zur Leseprobe</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="sect person">
+    <div class="wrap person-grid">
+      <img src={u('img/portrait-schreibtisch-720.webp')} srcset={`${u('img/portrait-schreibtisch-720.webp')} 720w, ${u('img/portrait-schreibtisch-1255.webp')} 1255w`} sizes="(max-width: 52rem) 100vw, 50vw" alt="Dr. Magdalena Börsig-Hover am Schreibtisch vor Bücherregal und historischer Landkarte" width="1255" height="687" loading="lazy" />
+      <div>
+        <h2>Historisch denken, gegenwartsbezogen fragen</h2>
+        <p>Meine wissenschaftliche Arbeit bewegt sich zwischen Geschichte, Philosophie, Theologie und Diplomatiegeschichte. Mich interessiert die Frage nach den Bedingungen menschlicher Orientierung: Was bedeutet es, in einer Zeit des Umbruchs verantwortlich zu urteilen und zu handeln?</p>
+        <p class="quiet">Lehrtätigkeit in Philosophie an der Philosophisch-Theologischen Hochschule Benediktbeuern und der Gustav-Siewerth-Akademie. Veröffentlichungen auch unter dem Namen Lina Börsig-Hover.</p>
+        <p><a class="more" href={u('ueber-mich/')}>Über mich</a> <span class="quiet" style="margin:0 .6rem">oder</span> <a class="more" href={u('publikationen/')}>Publikationen ansehen</a></p>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .hero { position: relative; min-height: min(88vh, 52rem); display: flex; align-items: flex-end; color: #f4ecdf; overflow: hidden; background: var(--night); }
+  .hero picture, .hero picture img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 60% 50%; }
+  .hero::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(32,26,21,.92) 0%, rgba(32,26,21,.72) 38%, rgba(32,26,21,.15) 75%), linear-gradient(0deg, rgba(32,26,21,.75), transparent 45%); }
+  .hero-text { position: relative; z-index: 1; width: 100%; padding-top: 6rem; padding-bottom: clamp(3rem, 7vw, 6rem); }
+  .hero-name { font-size: .95rem; color: #c4b49c; margin-bottom: 1.4rem; }
+  .hero h1 { font-weight: 400; max-width: 19ch; line-height: 1.04; margin-bottom: 1.6rem; color: #f8f1e6; }
+  .hero-sub { max-width: 30rem; font-size: 1.25em; line-height: 1.4; color: #ddd0bb; font-style: italic; font-weight: 400; }
+  .hero-links { display: flex; flex-wrap: wrap; gap: 1rem 2rem; align-items: center; margin-top: 2.2rem; }
+  .hero .btn { background: #f4ecdf; color: var(--night); }
+  .hero .btn:hover { background: #a3382f; color: #fff; }
+  .hero-alt { font-family: var(--sans); font-size: .92rem; color: #e9e0d0; text-decoration-color: #a3382f; }
+  .hero-alt:hover { color: #fff; }
+
+  .fragen { list-style: none; padding: 0; margin: 0 0 2rem; counter-reset: f; }
+  .fragen li { font-size: clamp(1.5rem, 1.2rem + 1.1vw, 2.1rem); line-height: 1.25; font-weight: 400; padding: 0 0 1.1rem; margin-bottom: 1.1rem; border-bottom: 1px solid var(--rule); }
+  .fragen li:last-child { border-bottom: 0; }
+
+  .felder-sect { background: var(--paper-2); }
+  .felder { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.5rem; margin-top: 1rem; }
+  .felder article { border-top: 1px solid var(--ink); padding-top: 1.1rem; }
+  .felder h3 a { text-decoration: none; }
+  .felder h3 a:hover { text-decoration: underline; }
+  .felder p { font-size: 1.05rem; line-height: 1.5; color: var(--ink-soft); margin: 0; }
+  @media (max-width: 60rem) { .felder { grid-template-columns: 1fr; gap: 2rem; } }
+
+  .buch { display: grid; grid-template-columns: minmax(0, 18rem) minmax(0, 38rem); gap: clamp(2rem, 6vw, 6rem); align-items: start; justify-content: center; }
+  .marg-inline { font-style: italic; color: var(--sepia); margin-bottom: .4rem; }
+  .buch h2 { margin-bottom: .2em; }
+  @media (max-width: 52rem) { .buch { grid-template-columns: 1fr; } .buch-cover { max-width: 13rem; } }
+
+  .person { padding-top: 0; }
+  .sect.person { border-top: 0; }
+  .person-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: clamp(2rem, 5vw, 5rem); align-items: center; border-top: 1px solid var(--rule); padding-top: clamp(3.5rem, 7vw, 6.5rem); }
+  .person-grid img { width: 100%; filter: sepia(.15); }
+  @media (max-width: 52rem) { .person-grid { grid-template-columns: 1fr; } }
+</style>

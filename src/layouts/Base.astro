@@ -1,0 +1,115 @@
+---
+import '../styles/global.css';
+import { u, site } from '../lib.js';
+
+interface Props {
+  title: string;
+  description: string;
+  path?: string;
+  image?: string;
+  jsonld?: object | object[];
+}
+const { title, description, path = '', image = 'img/og.jpg', jsonld } = Astro.props;
+const fullTitle = path === '' ? `${site.name} | Historische und philosophische Forschung` : `${title} | ${site.name}`;
+const canonical = new URL(u(path), Astro.site).href;
+const ogImage = new URL(u(image), Astro.site).href;
+
+const nav = [
+  { href: 'forschung/', label: 'Forschung' },
+  { href: 'zeit-der-entscheidung/', label: 'Zeit der Entscheidung' },
+  { href: 'publikationen/', label: 'Publikationen' },
+  { href: 'lehre-und-vortraege/', label: 'Lehre und Vorträge' },
+  { href: 'ueber-mich/', label: 'Über mich' },
+  { href: 'kontakt/', label: 'Kontakt' },
+];
+const current = Astro.url.pathname;
+const isCurrent = (href: string) => current.startsWith(u(href));
+
+const person = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Magdalena Börsig-Hover',
+  alternateName: 'Lina Börsig-Hover',
+  honorificPrefix: 'Dr.',
+  jobTitle: 'Philosophin und Historikerin',
+  url: new URL(u(''), Astro.site).href,
+  knowsAbout: ['Romano Guardini', 'Edith Stein', 'Diplomatiegeschichte des 19. Jahrhunderts', 'Phänomenologie', 'Personbegriff', 'Ideengeschichte'],
+};
+const ld = [person, ...(jsonld ? (Array.isArray(jsonld) ? jsonld : [jsonld]) : [])];
+---
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{fullTitle}</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href={canonical} />
+  {import.meta.env.BASE_URL !== '/' && <meta name="robots" content="noindex, nofollow" />}
+  <meta name="author" content="Dr. Magdalena Börsig-Hover" />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="de_DE" />
+  <meta property="og:site_name" content="Dr. Magdalena Börsig-Hover" />
+  <meta property="og:title" content={fullTitle} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content={canonical} />
+  <meta property="og:image" content={ogImage} />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="theme-color" content="#201a15" />
+  <link rel="icon" href={u('favicon.svg')} type="image/svg+xml" />
+  <link rel="sitemap" href={u('sitemap-index.xml')} />
+  <slot name="head" />
+  <script type="application/ld+json" set:html={JSON.stringify(ld)} />
+</head>
+<body>
+  <a class="skip" href="#inhalt">Zum Inhalt springen</a>
+  <header class="site-head">
+    <div class="inner">
+      <a class="brand" href={u('')}>Börsig-Hover <span>Forschung</span></a>
+      <nav class="nav" aria-label="Hauptnavigation">
+        <ul>
+          {nav.map((n) => <li><a href={u(n.href)} aria-current={isCurrent(n.href) ? 'page' : undefined}>{n.label}</a></li>)}
+        </ul>
+      </nav>
+      <details class="menu">
+        <summary>Menü</summary>
+        <ul>
+          {nav.map((n) => <li><a href={u(n.href)}>{n.label}</a></li>)}
+        </ul>
+      </details>
+    </div>
+  </header>
+
+  <main id="inhalt">
+    <slot />
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <div class="foot-grid">
+        <div>
+          <h2>Dr. Magdalena Börsig-Hover</h2>
+          <p class="foot-claim">{site.claim}</p>
+          <p class="sans" style="font-size:.9rem;color:#c4b49c;max-width:28rem">Historische und philosophische Forschung zu Diplomatiegeschichte, Ideengeschichte, Philosophie und Theologie. Publiziert auch als Lina Börsig-Hover.</p>
+        </div>
+        <div>
+          <ul>
+            {nav.map((n) => <li><a href={u(n.href)}>{n.label}</a></li>)}
+          </ul>
+        </div>
+        <div>
+          <ul>
+            <li><a href={`mailto:${site.email}`}>{site.email}</a></li>
+            <li><a href={u('impressum/')}>Impressum</a></li>
+            <li><a href={u('datenschutz/')}>Datenschutz</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="foot-base">
+        <span>© {new Date().getFullYear()} Dr. Magdalena Börsig-Hover</span>
+        <span>philosophiederneuenzeit.de</span>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

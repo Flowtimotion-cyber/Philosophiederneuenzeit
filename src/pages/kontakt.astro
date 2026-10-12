@@ -1,0 +1,31 @@
+---
+import Base from '../layouts/Base.astro';
+import { u, site } from '../lib.js';
+---
+<Base title="Kontakt" path="kontakt/" description="Kontakt zu Dr. Magdalena Börsig-Hover für wissenschaftliche Anfragen, Vorträge und Veröffentlichungen.">
+  <header class="page-head">
+    <div class="wrap">
+      <h1>Kontakt</h1>
+      <p>Für wissenschaftliche Anfragen, Vortragseinladungen, Rückfragen zu Publikationen und zum E-Book „Zeit der Entscheidung“.</p>
+    </div>
+  </header>
+  <section class="sect">
+    <div class="wrap kontakt">
+      <div>
+        <p class="marg-inline">Postanschrift</p>
+        <address>Dr. Magdalena Börsig-Hover<br />{site.strasse}<br />{site.ort}</address>
+        <p class="marg-inline" style="margin-top:2rem">E-Mail</p>
+        <p class="mail"><a href={`mailto:${site.email}`}>{site.email}</a></p>
+        <p class="quiet" style="font-size:1rem;max-width:30rem">Wenn Sie schreiben, nennen Sie gern Ihr Anliegen im Betreff, etwa Vortrag, Publikation oder Rezension.</p>
+      </div>
+      <img src={u('img/portrait-hut-800.webp')} alt="Magdalena Börsig-Hover mit Strohhut auf einer Wiese am Waldrand" width="800" height="491" loading="lazy" />
+    </div>
+  </section>
+</Base>
+<style>
+  .kontakt { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 6vw, 6rem); align-items: start; }
+  .marg-inline { font-style: italic; color: var(--sepia); margin-bottom: .3rem; }
+  address { font-style: normal; font-size: 1.35rem; line-height: 1.45; }
+  .mail { font-size: clamp(1.35rem, 1.1rem + 1vw, 1.9rem); }
+  @media (max-width: 52rem) { .kontakt { grid-template-columns: 1fr; } }
+</style>

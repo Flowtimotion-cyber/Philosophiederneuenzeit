@@ -1,0 +1,78 @@
+---
+import Base from '../layouts/Base.astro';
+import { u } from '../lib.js';
+import { monographien, herausgaben, sammelbeitraege, aufsaetze, rezensionen } from '../data/werk.js';
+
+const byYear = (a, b) => b.jahr - a.jahr;
+const gruppen = [
+  { id: 'monographien', titel: 'Monographien', liste: [...monographien].sort(byYear) },
+  { id: 'herausgaben', titel: 'Herausgeberschaften', liste: [...herausgaben].sort(byYear) },
+  { id: 'sammelbaende', titel: 'Beiträge in Sammelbänden', liste: [...sammelbeitraege].sort(byYear) },
+  { id: 'aufsaetze', titel: 'Aufsätze in Zeitschriften, Jahrbüchern und Festschriften', liste: [...aufsaetze].sort(byYear) },
+];
+const anzahlRez = rezensionen.reduce((n, r) => n + r.eintraege.length, 0);
+---
+<Base title="Publikationen" path="publikationen/" description="Schriftenverzeichnis von Dr. Magdalena (Lina) Börsig-Hover: Monographien zu Romano Guardini und Edith Stein, Herausgeberschaften, Aufsätze und über 30 Rezensionen ihrer Werke.">
+  <header class="page-head">
+    <div class="wrap">
+      <h1>Publikationen</h1>
+      <p>Schriftenverzeichnis. Die meisten Arbeiten sind unter dem Namen <em>Lina Börsig-Hover</em> erschienen; „Lina“ ist die Rufnamenform von Magdalena.</p>
+    </div>
+    <nav class="wrap toc" aria-label="Rubriken">
+      {gruppen.map((g) => <a href={`#${g.id}`}>{g.titel.split(' in ')[0]} <span>{g.liste.length}</span></a>)}
+      <a href="#rezensionen">Rezensionen <span>{anzahlRez}</span></a>
+    </nav>
+  </header>
+
+  {gruppen.map((g) => (
+    <section class="sect" id={g.id}>
+      <div class="wrap folio">
+        <p class="marg">{g.titel}</p>
+        <ol class="bib">
+          {g.liste.map((e) => (
+            <li>
+              <span class="jahr">{e.jahr}</span>
+              <span class="eintrag">
+                {e.link ? <a class="titel" href={u(e.link)}>{e.titel}</a> : <span class="titel">{e.titel}</span>}
+                <span class="nachweis">{e.nachweis}</span>
+              </span>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </section>
+  ))}
+
+  <section class="sect" id="rezensionen">
+    <div class="wrap folio">
+      <p class="marg">Rezensionen der eigenen Werke</p>
+      <h2>Rezeption</h2>
+      <p>Die Besprechungen dokumentieren, wie die Arbeiten in Theologie, Philosophie und Pädagogik aufgenommen wurden. Sie sind nach besprochenem Werk geordnet.</p>
+      {rezensionen.map((r) => (
+        <div class="rgruppe">
+          <h3>{r.werk}</h3>
+          <ul>{r.eintraege.map((e) => <li>{e}</li>)}</ul>
+        </div>
+      ))}
+    </div>
+  </section>
+</Base>
+
+<style>
+  .toc { display: flex; flex-wrap: wrap; gap: .5rem 1.6rem; margin-top: 2.5rem; }
+  .toc a { font-family: var(--sans); font-size: .88rem; text-decoration: none; color: var(--ink-soft); border-bottom: 1px solid var(--rule); }
+  .toc a span { color: var(--sepia); margin-left: .2rem; }
+  .toc a:hover { color: var(--seal); border-color: var(--seal); }
+  .sect { scroll-margin-top: 4rem; }
+  .bib { list-style: none; padding: 0; margin: 0; }
+  .bib li { display: grid; grid-template-columns: 3.5rem 1fr; gap: 1rem; padding: .9rem 0; border-bottom: 1px solid var(--rule); }
+  .bib li:first-child { border-top: 1px solid var(--rule); }
+  .jahr { font-family: var(--sans); font-size: .85rem; color: var(--sepia); padding-top: .3rem; font-variant-numeric: tabular-nums; }
+  .titel { display: block; font-style: italic; font-size: 1.12em; line-height: 1.35; }
+  a.titel { text-decoration-color: var(--seal); }
+  .nachweis { display: block; font-size: .98rem; color: var(--ink-soft); margin-top: .2rem; line-height: 1.45; }
+  .rgruppe { margin-top: 2.25rem; }
+  .rgruppe h3 { font-style: italic; font-weight: 500; font-size: 1.35rem; padding-bottom: .5rem; border-bottom: 1px solid var(--ink); }
+  .rgruppe ul { list-style: none; padding: 0; margin: 0; }
+  .rgruppe li { padding: .45rem 0; border-bottom: 1px solid var(--rule); font-size: 1.02rem; line-height: 1.45; }
+</style>

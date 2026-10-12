@@ -1,0 +1,26 @@
+---
+import Base from '../layouts/Base.astro';
+import { site } from '../lib.js';
+---
+<Base title="Datenschutz" path="datenschutz/" description="Datenschutzerklärung der Website von Dr. Magdalena Börsig-Hover.">
+  <header class="page-head"><div class="wrap"><h1>Datenschutzerklärung</h1><p>Diese Website kommt ohne Cookies, ohne Analysewerkzeuge und ohne eingebundene Inhalte Dritter aus.</p></div></header>
+  <section class="sect">
+    <div class="wrap folio recht">
+      <p class="marg">Stand: Oktober 2026</p>
+      <h2>Verantwortliche</h2>
+      <p>Dr. Magdalena Börsig-Hover, {site.strasse}, {site.ort}, E-Mail: <a href={`mailto:${site.email}`}>{site.email}</a></p>
+      <h2>Aufruf der Website</h2>
+      <p>Beim Aufruf dieser Website verarbeitet der Hosting-Anbieter technisch notwendige Daten, die Ihr Browser übermittelt: IP-Adresse, Datum und Uhrzeit des Zugriffs, aufgerufene Seite, Browsertyp und Betriebssystem. Diese Daten werden ausschließlich benötigt, um die Website auszuliefern und ihre Sicherheit zu gewährleisten (Art. 6 Abs. 1 lit. f DSGVO). Sie werden nicht mit anderen Daten zusammengeführt und nach kurzer Zeit gelöscht.</p>
+      <p>Hosting-Anbieter: GitHub Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, USA (GitHub Pages). Die Übermittlung in die USA erfolgt auf Grundlage des EU-US Data Privacy Framework.</p>
+      <h2>Schriftarten</h2>
+      <p>Die verwendeten Schriften werden lokal von diesem Server geladen. Es findet keine Verbindung zu Servern von Google oder anderen Schriftanbietern statt.</p>
+      <h2>Kontakt per E-Mail</h2>
+      <p>Wenn Sie per E-Mail Kontakt aufnehmen, werden Ihre Angaben zur Bearbeitung der Anfrage und für mögliche Anschlussfragen gespeichert (Art. 6 Abs. 1 lit. b und f DSGVO). Eine Weitergabe an Dritte findet nicht statt.</p>
+      <h2>Cookies und Analyse</h2>
+      <p>Es werden keine Cookies gesetzt und keine Reichweitenmessung oder Tracking-Werkzeuge eingesetzt.</p>
+      <h2>Ihre Rechte</h2>
+      <p>Sie haben das Recht auf Auskunft, Berichtigung, Löschung und Einschränkung der Verarbeitung Ihrer Daten, auf Datenübertragbarkeit sowie auf Widerspruch gegen die Verarbeitung (Art. 15 bis 21 DSGVO). Außerdem können Sie sich bei einer Datenschutz-Aufsichtsbehörde beschweren, etwa beim Bayerischen Landesamt für Datenschutzaufsicht.</p>
+    </div>
+  </section>
+</Base>
+<style>.recht h2 { font-size: 1.45rem; margin-top: 2rem; }</style>

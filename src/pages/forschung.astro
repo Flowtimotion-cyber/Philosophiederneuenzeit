@@ -1,0 +1,184 @@
+---
+import Base from '../layouts/Base.astro';
+import Linie from '../components/Linie.astro';
+import { u } from '../lib.js';
+
+const zeitschriften = ['Theologisch-praktische Quartalschrift', 'Christlich-pädagogische Blätter', 'Tijdschrift voor Filosofie', 'Zeitschrift für katholische Theologie', 'Wissenschaftlicher Literaturanzeiger', 'Theologische Revue'];
+const buendnisse = [
+  { name: 'Dreibund', partner: 'Deutschland, Österreich-Ungarn, Italien', text: 'Das 1882 geschlossene formale Bündnissystem, das insbesondere die französische und russische Machtentwicklung berücksichtigte.' },
+  { name: 'Mittelmeerabkommen', partner: 'Großbritannien, Italien, Österreich-Ungarn', text: 'Die britisch-italienische Verständigung von 1887 und der Beitritt Österreich-Ungarns schufen ein weiteres Geflecht zur Bewahrung des Status quo im Mittelmeer und im Osmanischen Raum.' },
+  { name: 'Rückversicherungsvertrag', partner: 'Deutschland, Russland', text: 'Mit dem deutsch-russischen Vertrag von 1887 vervollständigte sich Bismarcks Bündnissystem.' },
+];
+const unterscheidungen = [
+  ['Beobachtung', 'Behauptung'],
+  ['Primärinformation', 'Weitergabe'],
+  ['Nachricht', 'Kommentar'],
+  ['Tatsache', 'Gerücht'],
+  ['Quelle', 'Interpretation'],
+  ['Information', 'Manipulation'],
+];
+const schwerpunkte = [
+  ['Neuzeit', 'Neuzeitliche Daseinsdeutung und ihre philosophischen Voraussetzungen'],
+  ['Gegenwart', 'Das Verhältnis von Neuzeit und Gegenwart'],
+  ['Personales Zeitalter', 'Möglichkeit einer Überwindung der neuzeitlichen Daseinsdeutung'],
+  ['Welt- und Menschenbild', 'Voraussetzungen eines neuen Welt- und Menschenbildes für das 21. Jahrhundert'],
+  ['Tradition', 'Erneute Einbeziehung der antiken und mittelalterlichen Philosophie'],
+  ['Systematische Perspektive', 'Verbindung von Anthropologie, Phänomenologie, Metaphysik, Naturphilosophie und Kosmologie'],
+];
+const projektinhalte = [
+  ['Bewusstseinsbegriff', 'Max Schelers Untersuchung des Verhältnisses von Bewusstsein, Person und menschlicher Wirklichkeit'],
+  ['Phänomenologie des Staates', 'Entwurf zur phänomenologischen Bestimmung von Staat, Person, Gemeinschaft und personaler Ordnung'],
+  ['Philosophische Anthropologie und Kosmologie', 'Verbindung von Menschenbild, antiker Kosmologie, Naturphilosophie und Weltverständnis'],
+  ['Weiterentwicklung der antiken Kosmologie', 'Weiterführung kosmologischer Fragestellungen im Horizont einer zeitgenössischen Naturphilosophie'],
+];
+const manuskripte = [
+  'Diplomatie, Politik- und Zeitgeschichte des späten 19. Jahrhunderts',
+  'Verantwortung, Person und Entscheidung',
+  'Person, Wahrheit und Welt',
+  'Wiederanknüpfung an unser antikes Erbe',
+  'Wahrheitstheorien der Moderne im Kontext eines personalen Wahrheitsverständnisses',
+  'Simone Weil und Edith Stein. Ein Vergleich',
+  'Die Anfänge des dialogischen Denkens bei Friedrich Heinrich Jacobi (1743–1819) und Ludwig Feuerbach (1804–1872)',
+  'John Henry Newman (1801–1890). Zum Verhältnis von Glaube und Vernunft',
+];
+---
+<Base title="Forschung" path="forschung/" description="Forschungsschwerpunkte von Dr. Magdalena Börsig-Hover: Romano Guardini und die Deutung der Moderne, europäische Diplomatiegeschichte 1887–1889, Mayerling, Quellenkritik im Zeitalter künstlicher Intelligenz.">
+  <header class="page-head">
+    <div class="wrap">
+      <h1>Forschung</h1>
+      <p>Meine Arbeit verbindet historische Quellenforschung mit philosophie-, theologie- und ideengeschichtlichen Fragestellungen. Im Mittelpunkt steht die Frage, wie Menschen und Gesellschaften Zeiten tiefgreifender Veränderung wahrnehmen, interpretieren und auf sie reagieren.</p>
+    </div>
+    <nav class="wrap toc" aria-label="Abschnitte">
+      <a href="#uebergaenge">Übergänge</a>
+      <a href="#guardini">Romano Guardini</a>
+      <a href="#rezeption">Rezeption</a>
+      <a href="#diplomatie">Diplomatiegeschichte</a>
+      <a href="#quellenkritik">Quellenkritik heute</a>
+      <a href="#projekte">Aktuelle Projekte</a>
+    </nav>
+  </header>
+
+  <section class="sect" id="uebergaenge">
+    <div class="wrap folio">
+      <p class="marg">Zwischen Geschichte und Gegenwart</p>
+      <p class="lead">Mich interessieren besonders die Übergänge zwischen</p>
+      <ul class="pairs">
+        <li><span>historischer Wahrnehmung</span><span>und</span><span>späterer Interpretation</span></li>
+        <li><span>Information</span><span>und</span><span>Gerücht</span></li>
+        <li><span>Beobachtung</span><span>und</span><span>Deutung</span></li>
+        <li><span>Wahrheit</span><span>und</span><span>ihrer medialen Vermittlung</span></li>
+        <li><span>individueller Entscheidung</span><span>und</span><span>historischer Verantwortung</span></li>
+      </ul>
+      <p>Diese Perspektive verbindet scheinbar unterschiedliche Forschungsfelder.</p>
+    </div>
+  </section>
+
+  <section class="sect" id="guardini">
+    <div class="wrap folio">
+      <p class="marg">Romano Guardini</p>
+      <h2>Die Gegenwart als Herausforderung</h2>
+      <p>Ein zentraler Schwerpunkt meiner Arbeit ist Romano Guardini (1885–1968) und seine Deutung der Moderne, der „Gegenwart“.</p>
+      <p>Guardini beschäftigt sich mit einer Welt, in der traditionelle Ordnungen ihre Selbstverständlichkeit verlieren und neue technische, gesellschaftliche und politische Kräfte entstehen. Seine Texte fragen danach, was es bedeutet, in einer solchen Epoche Mensch zu sein, und wie Freiheit, Verantwortung und Orientierung unter veränderten Bedingungen möglich bleiben.</p>
+      <p>Besonders interessieren mich dabei die Fragen nach</p>
+      <ul class="terms">
+        <li>Person</li><li>Freiheit</li><li>Verantwortung</li><li>Entscheidung</li><li>Wahrheit</li><li>Orientierung</li>
+      </ul>
+      <p><cite>Das personale Antlitz des Menschen. Eine Untersuchung zum Personbegriff bei Romano Guardini</cite> (Mainz 1987) erschließt Guardinis Personverständnis systematisch. <cite><a href={u('zeit-der-entscheidung/')}>Zeit der Entscheidung. Zu Romano Guardinis Deutung der Gegenwart</a></cite> (1990) verschiebt den Akzent stärker auf seine Geschichts- und Gegenwartsdeutung.</p>
+      <p>Die Frage nach der Person verbindet sich so mit der Frage nach der Zeit, in der diese Person handeln und entscheiden muss.</p>
+    </div>
+  </section>
+
+  <section class="sect" id="rezeption">
+    <div class="wrap folio">
+      <p class="marg">Wissenschaftliche Rezeption</p>
+      <h2>Ein Buch wird Teil einer Forschungsgeschichte</h2>
+      <p>Zur Erforschung Guardinis gehört nicht nur die Lektüre seiner eigenen Texte. Ebenso wichtig ist, wie seine Gedanken von der wissenschaftlichen Öffentlichkeit aufgenommen, interpretiert und weitergeführt wurden.</p>
+      <p>Deshalb dokumentiere ich auch die Rezensionen meiner eigenen Arbeiten, die unter dem Namen Lina Börsig-Hover erschienen sind. Über dreißig Besprechungen liegen vor, unter anderem in:</p>
+      <ul class="liste">{zeitschriften.map((z) => <li><cite>{z}</cite></li>)}</ul>
+      <p>Die Rezensionen sind nicht bloß bibliographische Nachweise. Sie zeigen, welche Fragen an Guardini gestellt wurden, welche Aspekte seines Denkens Aufmerksamkeit fanden und wie sich die Perspektive auf sein Werk verändert hat.</p>
+      <p><a class="more" href={u('publikationen/#rezensionen')}>Alle Rezensionen nach Werk</a></p>
+    </div>
+  </section>
+
+  <section class="sect" id="diplomatie">
+    <div class="wrap folio">
+      <p class="marg">Diplomatiegeschichte</p>
+      <h2>Wahrnehmung, Information und Entscheidung</h2>
+      <p>Ein zweiter Schwerpunkt liegt in der europäischen Diplomatiegeschichte des späten 19. Jahrhunderts: im Beziehungsgeflecht zwischen Wien, Berlin, Paris, London, St. Petersburg und Rom, und in der Frage, wie politische Wirklichkeit durch diplomatische Berichte wahrgenommen und vermittelt wurde.</p>
+      <p>Ein exemplarischer Forschungsgegenstand ist die <strong>Mayerling-Tragödie von 1889</strong>. Dabei geht es nicht allein um das Geschehen in Mayerling, sondern um eine erkenntnisgeschichtliche Frage: Wie wurde das Ereignis unmittelbar danach wahrgenommen, welche Informationen gelangten in diplomatische Kanäle, und wie wurden sie interpretiert?</p>
+      <h3 style="margin-top:2.5rem">Das diplomatische Europa 1887–1889</h3>
+      <dl class="buendnisse wide">
+        {buendnisse.map((b) => (
+          <div>
+            <dt>{b.name}</dt>
+            <dd class="partner">{b.partner}</dd>
+            <dd>{b.text}</dd>
+          </div>
+        ))}
+      </dl>
+      <p>So entstand ein System, in dem Russland eingebunden, Österreich-Ungarn abgesichert, Italien an Deutschland gebunden und Großbritannien diplomatisch angenähert werden sollte. Diplomatiegeschichte wird damit zur Geschichte widersprüchlicher Interessen, Informationen und Erwartungen.</p>
+    </div>
+  </section>
+
+  <section class="sect" id="quellenkritik">
+    <div class="wrap folio">
+      <p class="marg">Von der Depesche zur digitalen Gegenwart</p>
+      <h2>Quellenkritik als Gegenwartsaufgabe</h2>
+      <p>Hier liegt die Verbindung beider Forschungsfelder. Der Diplomat des 19. Jahrhunderts musste zwischen offiziellen Mitteilungen, vertraulichen Informationen, Gerüchten und eigenen Beobachtungen unterscheiden. Heute stehen wir vor einer strukturell ähnlichen, technisch aber radikal erweiterten Herausforderung.</p>
+      <p>Digitalisierung, soziale Medien, künstliche Intelligenz, globale Vernetzung und politische Polarisierung verändern die Bedingungen, unter denen Wirklichkeit wahrgenommen und beurteilt wird. Information erscheint unmittelbar, ist aber häufig bereits gefiltert, ausgewählt, kontextualisiert, algorithmisch vermittelt und interpretiert.</p>
+      <blockquote class="quote">Woher wissen wir, was wir zu wissen glauben?</blockquote>
+      <p>Historische Quellenkritik ist deshalb nicht nur eine Methode für die Vergangenheit. Sie ist eine Fähigkeit für die Gegenwart. Auch heute muss unterschieden werden zwischen</p>
+      <ul class="pairs">
+        {unterscheidungen.map(([a, b]) => <li><span>{a}</span><span>und</span><span>{b}</span></li>)}
+      </ul>
+      <p>Gerade im Zeitalter künstlicher Intelligenz gewinnt diese Unterscheidung neue Bedeutung. KI kann Informationen nicht nur schneller zugänglich machen. Sie kann auch Texte erzeugen, Zusammenhänge plausibel erscheinen lassen und Interpretationen formulieren, deren Quellenlage zunächst unsichtbar bleibt. Damit stellt sich eine alte Frage unter neuen Bedingungen: Wie bleibt der Mensch urteilsfähig?</p>
+      <h3 style="margin-top:2.5rem">Person, Wahrheit, Entscheidung</h3>
+      <p>Hier begegnen sich die historischen und philosophischen Dimensionen der Arbeit. Guardinis Frage nach der Person und die diplomatiegeschichtliche Frage nach Wahrnehmung, Information und Entscheidung führen zu einem gemeinsamen Problem: Wie kann der Mensch in einer unübersichtlichen Welt Wirklichkeit erkennen, verantwortlich urteilen und frei handeln?</p>
+      <p>Die Geschichte liefert dafür keine einfachen Rezepte. Aber sie zeigt, wie Menschen unter Unsicherheit handeln mussten, und wie folgenreich es sein kann, wenn Wahrnehmung, Information und Urteil auseinanderfallen.</p>
+    </div>
+  </section>
+
+  <Linie />
+
+  <section class="sect" id="projekte">
+    <div class="wrap folio">
+      <p class="marg">Seit 2015</p>
+      <h2>Philosophie der Neuen Zeit</h2>
+      <dl class="def">
+        {schwerpunkte.map(([k, v]) => <div><dt>{k}</dt><dd>{v}</dd></div>)}
+      </dl>
+      <p class="quiet">Zentrale Autoren: Romano Guardini, Edith Stein, Martin Heidegger, Aristoteles, Thomas von Aquin.</p>
+
+      <h3 style="margin-top:3rem">Aktuelles Forschungsprojekt</h3>
+      <p class="lead" style="font-size:1.2em">„Zeit der Entscheidung. Deutung der Gegenwart im Hinblick auf das 21. Jahrhundert“</p>
+      <p>Fortlaufend überarbeitetes Forschungsmanuskript zur Deutung von Neuzeit, Gegenwart und neuer Epoche.</p>
+      <dl class="def">
+        {projektinhalte.map(([k, v]) => <div><dt>{k}</dt><dd>{v}</dd></div>)}
+      </dl>
+
+      <h3 style="margin-top:3rem">Forschungsmanuskripte</h3>
+      <ul class="liste">{manuskripte.map((m) => <li>{m}</li>)}</ul>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .toc { display: flex; flex-wrap: wrap; gap: .5rem 1.6rem; margin-top: 2.5rem; }
+  .toc a { font-family: var(--sans); font-size: .88rem; text-decoration: none; color: var(--ink-soft); border-bottom: 1px solid var(--rule); }
+  .toc a:hover { color: var(--seal); border-color: var(--seal); }
+  .sect { scroll-margin-top: 4rem; }
+  .liste { padding-left: 1.1rem; margin: 0 0 1.5rem; }
+  .liste li { margin-bottom: .35rem; }
+  .liste li::marker { color: var(--seal); }
+  .buendnisse { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin: 1rem 0 2rem; }
+  .buendnisse div { border-top: 1px solid var(--ink); padding-top: .9rem; }
+  .buendnisse dt { font-size: 1.35rem; font-weight: 600; }
+  .buendnisse dd { margin: 0; font-size: 1.02rem; line-height: 1.5; color: var(--ink-soft); }
+  .buendnisse .partner { font-family: var(--sans); font-size: .82rem; color: var(--sepia); margin: .2rem 0 .7rem; }
+  @media (max-width: 60rem) { .buendnisse { grid-template-columns: 1fr; } }
+  .def { margin: 1.25rem 0 1.75rem; border-top: 1px solid var(--rule); }
+  .def div { display: grid; grid-template-columns: 12rem 1fr; gap: 1.25rem; padding: .7rem 0; border-bottom: 1px solid var(--rule); }
+  .def dt { font-weight: 600; }
+  .def dd { margin: 0; color: var(--ink-soft); }
+  @media (max-width: 40rem) { .def div { grid-template-columns: 1fr; gap: .1rem; } }
+</style>

@@ -1,0 +1,55 @@
+---
+import Base from '../layouts/Base.astro';
+import { vortraege, vorlesungen, seminare } from '../data/werk.js';
+const jahrAus = (d) => (d.match(/(\d{4})(?!.*\d{4})/) || [])[1];
+---
+<Base title="Lehre und Vorträge" path="lehre-und-vortraege/" description="Lehrveranstaltungen an der PTH Benediktbeuern, der Gustav-Siewerth-Akademie und der Universität München sowie Vorträge und Seminare von Dr. Magdalena Börsig-Hover.">
+  <header class="page-head">
+    <div class="wrap">
+      <h1>Lehre und Vorträge</h1>
+      <p>Vorlesungen und Seminare seit 1986 an Hochschulen und Akademien, dazu Vortragstätigkeit in der Erwachsenen- und Studentenbildung im deutschsprachigen Raum.</p>
+    </div>
+    <nav class="wrap toc" aria-label="Rubriken">
+      <a href="#lehre">Lehrveranstaltungen</a><a href="#vortraege">Vorträge</a><a href="#seminare">Seminare</a>
+    </nav>
+  </header>
+
+  <section class="sect" id="lehre">
+    <div class="wrap folio">
+      <p class="marg">Lehrveranstaltungen an Hochschulen und Akademien seit WS 1991/92</p>
+      <p class="quiet" style="font-size:1rem">PTH Benediktbeuern: Philosophisch-Theologische Hochschule der Salesianer Don Boscos. Gustav-Siewerth-Akademie: Weilheim-Bierbronnen.</p>
+      <ol class="zeilen">
+        {vorlesungen.map((v) => <li><span class="z">{v.semester}</span><span><span class="t">{v.titel}</span><span class="o">{v.ort}</span></span></li>)}
+      </ol>
+    </div>
+  </section>
+
+  <section class="sect" id="vortraege">
+    <div class="wrap folio">
+      <p class="marg">Vorträge</p>
+      <ol class="zeilen">
+        {vortraege.map((v) => <li><span class="z">{jahrAus(v.datum)}</span><span><span class="t">{v.titel}</span><span class="o">{v.ort}{v.datum.length > 4 ? `, ${v.datum}` : ''}</span></span></li>)}
+      </ol>
+    </div>
+  </section>
+
+  <section class="sect" id="seminare">
+    <div class="wrap folio">
+      <p class="marg">Seminare außerhalb der Hochschule</p>
+      <ol class="zeilen">
+        {seminare.map((v) => <li><span class="z">{jahrAus(v.datum)}</span><span><span class="t">{v.titel}</span><span class="o">{v.ort}, {v.datum}</span></span></li>)}
+      </ol>
+    </div>
+  </section>
+</Base>
+<style>
+  .toc { display: flex; flex-wrap: wrap; gap: .5rem 1.6rem; margin-top: 2.5rem; }
+  .toc a { font-family: var(--sans); font-size: .88rem; text-decoration: none; color: var(--ink-soft); border-bottom: 1px solid var(--rule); }
+  .sect { scroll-margin-top: 4rem; }
+  .zeilen { list-style: none; padding: 0; margin: 0; border-top: 1px solid var(--rule); }
+  .zeilen li { display: grid; grid-template-columns: 6.5rem 1fr; gap: 1rem; padding: .75rem 0; border-bottom: 1px solid var(--rule); }
+  .z { font-family: var(--sans); font-size: .85rem; color: var(--sepia); padding-top: .25rem; font-variant-numeric: tabular-nums; }
+  .t { display: block; line-height: 1.35; }
+  .o { display: block; font-size: .95rem; color: var(--ink-soft); margin-top: .15rem; }
+  @media (max-width: 30rem) { .zeilen li { grid-template-columns: 1fr; gap: 0; } }
+</style>

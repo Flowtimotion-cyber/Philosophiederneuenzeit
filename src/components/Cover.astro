@@ -1,0 +1,26 @@
+---
+// Typografischer Platzhalter-Umschlag für das E-Book, bis ein gestaltetes Cover vorliegt
+interface Props { klein?: boolean }
+const { klein = false } = Astro.props;
+---
+<figure class:list={['cover', { klein }]} aria-label="Umschlag: Zeit der Entscheidung. Zu Romano Guardinis Deutung der Gegenwart">
+  <div class="c-in">
+    <p class="c-autor">Lina Börsig-Hover</p>
+    <div class="c-mitte">
+      <p class="c-titel">Zeit der<br />Entscheidung</p>
+      <span class="c-strich"></span>
+      <p class="c-unter">Zu Romano Guardinis<br />Deutung der Gegenwart</p>
+    </div>
+    <p class="c-verlag">E-Book</p>
+  </div>
+</figure>
+<style>
+  .cover { margin: 0; aspect-ratio: 2 / 3; background: #201a15; color: #e9e0d0; padding: 7%; box-shadow: 0 30px 50px -30px rgba(32,26,21,.7), inset 0 0 0 1px rgba(233,224,208,.08); width: 100%; max-width: 20rem; }
+  .c-in { height: 100%; border: 1px solid #8a7257; padding: 9% 8%; display: flex; flex-direction: column; justify-content: space-between; text-align: center; }
+  p { max-width: none; }
+  .c-autor, .c-verlag { color: #c4b49c !important; font-family: var(--sans); font-size: .7rem; letter-spacing: .08em; color: #c4b49c; margin: 0; }
+  .c-titel { color: #f4ecdf; font-family: var(--serif); font-size: clamp(1.7rem, 3.2vw, 2.4rem); line-height: 1.02; margin: 0; font-weight: 500; }
+  .c-strich { display: block; width: 2.5rem; height: 1px; background: #a3382f; margin: 1.1rem auto; }
+  .c-unter { font-family: var(--serif); font-style: italic; font-size: 1rem !important; line-height: 1.3; margin: 0; color: #d8ccb7; }
+  .klein .c-titel { font-size: 1.6rem; }
+</style>

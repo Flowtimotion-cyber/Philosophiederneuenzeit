@@ -1,0 +1,26 @@
+---
+import Base from '../layouts/Base.astro';
+import { site } from '../lib.js';
+---
+<Base title="Impressum" path="impressum/" description="Impressum der Website von Dr. Magdalena Börsig-Hover.">
+  <header class="page-head"><div class="wrap"><h1>Impressum</h1></div></header>
+  <section class="sect">
+    <div class="wrap folio recht">
+      <p class="marg">Angaben gemäß § 5 DDG</p>
+      <p>Dr. Magdalena Börsig-Hover<br />{site.strasse}<br />{site.ort}</p>
+      <h2>Kontakt</h2>
+      <p>E-Mail: <a href={`mailto:${site.email}`}>{site.email}</a></p>
+      <h2>Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV</h2>
+      <p>Dr. Magdalena Börsig-Hover, Anschrift wie oben.</p>
+      <h2>Haftung für Inhalte</h2>
+      <p>Die Inhalte dieser Seiten wurden mit größter Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte kann jedoch keine Gewähr übernommen werden. Als Diensteanbieterin bin ich für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich, jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen.</p>
+      <h2>Haftung für Links</h2>
+      <p>Diese Website enthält Links zu externen Websites Dritter, auf deren Inhalte ich keinen Einfluss habe. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber verantwortlich. Bei Bekanntwerden von Rechtsverletzungen werden derartige Links umgehend entfernt.</p>
+      <h2>Urheberrecht</h2>
+      <p>Die Texte und Fotografien auf dieser Website unterliegen dem deutschen Urheberrecht. Vervielfältigung, Bearbeitung und Verbreitung außerhalb der Grenzen des Urheberrechts bedürfen der schriftlichen Zustimmung. Wissenschaftliche Zitate mit Quellenangabe sind ausdrücklich erwünscht.</p>
+      <h2>Bildnachweis</h2>
+      <p>Porträtfotografien: privat. Titelbild: Komposition „Schreibtisch mit Depesche und Europakarte“, digital erstellt.</p>
+    </div>
+  </section>
+</Base>
+<style>.recht h2 { font-size: 1.45rem; margin-top: 2rem; }</style>
