@@ -175,3 +175,14 @@ p { margin: 0 0 1em; }
   .js [data-reveal] { opacity: 1 !important; transform: none !important; }
   .js [data-reveal='bild'] img { transform: none !important; clip-path: none !important; }
 }
+
+/* Seitenbild in der rechten Spalte des Folio-Rasters */
+.folio > .seitenbild { grid-column: 3; grid-row: 1 / span 8; align-self: start; justify-self: end; width: 100%; max-width: 16rem; margin: 0; position: sticky; top: 6rem; }
+.folio > .seitenbild.breit { max-width: 22rem; }
+.seitenbild img { width: 100%; border-radius: 4px; box-shadow: 0 28px 40px -30px rgba(35, 40, 47, .55); }
+.seitenbild figcaption { font-family: var(--sans); font-size: .76rem; line-height: 1.45; color: var(--ink-soft); margin-top: .7rem; }
+@media (max-width: 72rem) { .folio > .seitenbild { max-width: 12rem; } .folio > .seitenbild.breit { max-width: 15rem; } }
+@media (max-width: 52rem) {
+  .folio > .seitenbild, .folio > .seitenbild.breit { grid-column: 1; grid-row: auto; position: static; justify-self: start; max-width: 15rem; margin: 0 0 1.75rem; }
+  .folio > .seitenbild.breit { max-width: 100%; }
+}

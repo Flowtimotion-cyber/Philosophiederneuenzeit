@@ -35,4 +35,4 @@ Jeder Push auf `main` baut die Seite über GitHub Actions und veröffentlicht si
 
 ## Offene Punkte (Freigabe durch die Autorin)
 
-Einträge mit `pruefen:` in `src/data/werk.js` enthalten Unsicherheiten aus dem Entwurf (Seitenzahlen, Publikationsort, Datumsangaben). Die Guardini-Porträts aus dem Entwurf sind wegen ungeklärter Bildrechte nicht eingebunden.
+Einträge mit `pruefen:` in `src/data/werk.js` enthalten Unsicherheiten aus dem Entwurf (Seitenzahlen, Publikationsort, Datumsangaben). Die beiden Guardini-Fotos aus dem Entwurf sind eingebunden (Startseite, Forschung, Buchseite). Vor dem Livegang auf der echten Domain die Nutzungsrechte klären: Profilporträt beim Universitätsarchiv Tübingen, Schreibtischfoto Quelle unbekannt.
