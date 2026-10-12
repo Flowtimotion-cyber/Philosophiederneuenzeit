@@ -96,6 +96,9 @@ const bookLd = {
 </Base>
 
 <style>
+  /* weniger leerer Rand rechts: breitere Textspalte auf der Buchseite */
+  .folio { --measure: 46rem; --margin-col: 11rem; }
+  .page-head p { max-width: 44rem; }
   .kopf { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: clamp(2rem, 5vw, 5rem); align-items: center; }
   .ausgabe { color: var(--seal); font-size: .9rem; margin-bottom: 1rem; }
   .aktion { display: flex; flex-wrap: wrap; gap: 1rem 2rem; align-items: center; margin-top: 2rem !important; font-size: 1rem !important; }

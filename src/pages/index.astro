@@ -5,7 +5,7 @@ import Buch from '../components/Buch.astro';
 import { u } from '../lib.js';
 
 const ziele = [
-  { t: 'Orientierung', d: 'Philosophisches Grundlagenwissen vermitteln, das Klarheit und Ordnung ins eigene Denken bringt und hilft, einen eigenen philosophischen Weg zu finden.' },
+  { t: 'Orientierung', d: 'Philosophisches Grundlagenwissen vermitteln, sodass Klarheit und Ordnung ins eigene Denken kommen und jeder seinen eigenen philosophischen Weg finden kann.' },
   { t: 'Zugang zu sich selbst', d: 'Über philosophische Erkenntnisse und Zusammenhänge zu einem tieferen Selbstverständnis finden und es im Alltag fruchtbar machen.' },
   { t: 'Herkunft verstehen', d: 'Über die geistesgeschichtliche und geschichtliche Herkunft der Gegenwart aufklären, um ihre Fragen und Möglichkeiten besser zu erkennen.' },
   { t: 'Überlieferung erschließen', d: 'Das Wissen vergangener Jahrhunderte verdichtet darstellen, als Grundlage für Neuanfänge in Gesellschaft, Politik, Wirtschaft und Technik.' },
@@ -35,7 +35,7 @@ const ziele = [
           <img src={u('img/hero-1600.webp')} srcset={`${u('img/hero-960.webp')} 960w, ${u('img/hero-1600.webp')} 1600w`} sizes="(max-width: 60rem) 100vw, 55vw" alt="Schreibtisch mit diplomatischer Depesche, historischer Europakarte und aufgeschlagenem philosophischem Buch" width="1536" height="1024" fetchpriority="high" />
         </figure>
         <figure class="foto hero-portrait">
-          <img src={u('img/farbe-wiese-900.webp')} alt="Magdalena Börsig-Hover lächelnd auf einer Bank in einer Sommerwiese" width="900" height="600" />
+          <img src={u('img/portrait-schreibtisch-kreis.webp')} alt="Dr. Magdalena Börsig-Hover am Schreibtisch" width="580" height="580" />
         </figure>
       </div>
     </div>
@@ -118,7 +118,7 @@ const ziele = [
   <section class="sect person">
     <div class="wrap person-grid">
       <figure class="foto person-foto" data-reveal="bild">
-        <img src={u('img/farbe-wald-1200.webp')} srcset={`${u('img/farbe-wald-700.webp')} 700w, ${u('img/farbe-wald-1200.webp')} 1200w`} sizes="(max-width: 52rem) 100vw, 50vw" alt="Magdalena Börsig-Hover im Wald, an einen Baumstamm gelehnt" width="1200" height="886" loading="lazy" />
+        <img src={u('img/portrait-schreibtisch-1255.webp')} srcset={`${u('img/portrait-schreibtisch-720.webp')} 720w, ${u('img/portrait-schreibtisch-1255.webp')} 1255w`} sizes="(max-width: 52rem) 100vw, 50vw" alt="Dr. Magdalena Börsig-Hover am Schreibtisch vor Bücherregal und historischer Landkarte" width="1255" height="687" loading="lazy" />
       </figure>
       <div>
         <h2>Historisch denken, gegenwartsbezogen fragen</h2>
@@ -154,7 +154,6 @@ const ziele = [
   .hero-haupt { aspect-ratio: 4 / 3.2; border-radius: 6px; box-shadow: 0 40px 60px -40px rgba(35, 40, 47, .45); }
   .hero-haupt img { transform: scale(1.06); will-change: transform; }
   .hero-portrait { position: absolute; left: -2.5rem; bottom: 0; width: 42%; aspect-ratio: 1; border-radius: 50%; border: 6px solid var(--paper); box-shadow: 0 20px 40px -20px rgba(35, 40, 47, .5); }
-  .hero-portrait img { object-position: 62% 30%; transform: scale(1.5); transform-origin: 62% 30%; }
 
   /* Ladeanimation: Zeilen erscheinen nacheinander, Bilder gleiten herein */
   .js .anim { opacity: 0; transform: translateY(22px); animation: auf 1s var(--ease) forwards; animation-delay: calc(var(--d) * 140ms + 120ms); }
@@ -205,6 +204,6 @@ const ziele = [
   @media (max-width: 44rem) { .ziele { grid-template-columns: 1fr; } }
 
   .person-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: clamp(2rem, 5vw, 5rem); align-items: center; }
-  .person-foto { aspect-ratio: 4 / 3; border-radius: 6px; }
+  .person-foto { aspect-ratio: 1255 / 687; border-radius: 6px; }
   @media (max-width: 52rem) { .person-grid { grid-template-columns: 1fr; } }
 </style>

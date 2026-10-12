@@ -20,7 +20,7 @@ import { u, site } from '../lib.js';
         <p class="sans" style="font-size:.95rem"><a href="https://www.youtube.com/channel/UClImlO5CRyfyVc07ar_ei0A" rel="noopener">YouTube-Kanal</a> <span class="quiet" style="margin:0 .5rem">und</span> <a href="https://www.instagram.com/philosophiednzeit/" rel="noopener">Instagram @philosophiednzeit</a></p>
         <p class="quiet" style="font-size:1rem;max-width:30rem">Wenn Sie schreiben, nennen Sie gern Ihr Anliegen im Betreff, etwa Vortrag, Publikation oder Rezension.</p>
       </div>
-      <figure class="foto" data-reveal="bild"><img src={u('img/farbe-hut-800.webp')} alt="Magdalena Börsig-Hover mit Strohhut auf einer Wiese am Waldrand" width="800" height="491" loading="lazy" /></figure>
+      <figure class="foto" data-reveal="bild"><img src={u('img/portrait-schreibtisch-hoch.webp')} alt="Dr. Magdalena Börsig-Hover am Schreibtisch" width="550" height="687" loading="lazy" /></figure>
     </div>
   </section>
 </Base>
@@ -29,5 +29,7 @@ import { u, site } from '../lib.js';
   .marg-inline { font-style: italic; color: var(--sepia); margin-bottom: .3rem; }
   address { font-style: normal; font-size: 1.35rem; line-height: 1.45; }
   .mail { font-size: clamp(1.35rem, 1.1rem + 1vw, 1.9rem); }
-  @media (max-width: 52rem) { .kontakt { grid-template-columns: 1fr; } }
+  .kontakt .foto { max-width: 24rem; justify-self: end; }
+  @media (max-width: 52rem) { .kontakt .foto { justify-self: start; }
+  .kontakt { grid-template-columns: 1fr; } }
 </style>

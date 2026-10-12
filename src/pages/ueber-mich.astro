@@ -3,7 +3,7 @@ import Base from '../layouts/Base.astro';
 import { u } from '../lib.js';
 import { taetigkeiten } from '../data/werk.js';
 ---
-<Base title="Über mich" path="ueber-mich/" image="img/farbe-mauer-880.webp" description="Dr. Magdalena Börsig-Hover: Philosophin und Historikerin. Forschung zu Person, Freiheit, Wahrheit und Entscheidung, von der Diplomatie des 19. Jahrhunderts bis zur digitalen Gegenwart.">
+<Base title="Über mich" path="ueber-mich/" image="img/portrait-schreibtisch-hoch.webp" description="Dr. Magdalena Börsig-Hover: Philosophin und Historikerin. Forschung zu Person, Freiheit, Wahrheit und Entscheidung, von der Diplomatie des 19. Jahrhunderts bis zur digitalen Gegenwart.">
   <header class="page-head">
     <div class="wrap">
       <h1>Historisch denken, gegenwartsbezogen fragen</h1>
@@ -13,7 +13,7 @@ import { taetigkeiten } from '../data/werk.js';
   <section class="sect">
     <div class="wrap profil">
       <figure class="foto" data-reveal="bild">
-        <img src={u('img/farbe-mauer-880.webp')} sizes="(max-width: 52rem) 100vw, 26rem" alt="Dr. Magdalena Börsig-Hover vor einer alten Natursteinmauer" width="880" height="1307" />
+        <img src={u('img/portrait-schreibtisch-hoch.webp')} alt="Dr. Magdalena Börsig-Hover am Schreibtisch vor Bücherregal und historischer Landkarte" width="550" height="687" />
       </figure>
       <div class="text">
         <p class="lead">Meine wissenschaftliche Arbeit bewegt sich zwischen Geschichte, Philosophie, Theologie und Diplomatiegeschichte.</p>
@@ -47,7 +47,6 @@ import { taetigkeiten } from '../data/werk.js';
 
   <section class="leit">
     <div class="wrap">
-      <figure class="foto" data-reveal="bild"><img src={u('img/farbe-steine-1600.webp')} alt="Magdalena Börsig-Hover im Wald, Steine auf einem moosbewachsenen Hügel ordnend" width="1600" height="1066" loading="lazy" /></figure>
       <blockquote>
         <p>Von der Geschichte diplomatischer Wahrnehmung über Guardinis Deutung der Gegenwart bis zur digitalen Welt des 21. Jahrhunderts: eine Forschung über die Bedingungen menschlicher Orientierung, Wahrheitsfindung und verantwortlicher Entscheidung in Zeiten des Umbruchs.</p>
         <cite>Leitmotiv</cite>
@@ -65,7 +64,7 @@ import { taetigkeiten } from '../data/werk.js';
   .taet li { margin-bottom: .8rem; line-height: 1.5; }
   .taet li::marker { color: var(--seal); }
   .leit { background: var(--sage); padding: clamp(4rem, 8vw, 7rem) 0; }
-  .leit .wrap { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 5vw, 5rem); align-items: center; }
+  .leit .wrap { max-width: 52rem; }
   .leit blockquote { margin: 0; font-size: clamp(1.4rem, 1.1rem + 1vw, 1.9rem); line-height: 1.35; font-style: italic; font-weight: 400; color: var(--ink); }
   .leit cite { display: block; margin-top: 1.25rem; font-family: var(--sans); font-style: normal; font-size: .85rem; color: var(--seal); }
   @media (max-width: 52rem) { .leit .wrap { grid-template-columns: 1fr; } }
